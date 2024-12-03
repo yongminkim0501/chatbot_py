@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>주식 정보 검색</title>
+</head>
+<body>
+    <h1>주식 정보 검색</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="stock_code" placeholder="주식 코드를 입력하세요">
+        <button type="submit">검색</button>
+    </form>
+
+    {% if has_result %}
+        <h2>검색 결과:</h2>
+        <div class="result">
+            {{ result|safe }}
+        </div>
+    {% endif %}
+</body>
+</html>
