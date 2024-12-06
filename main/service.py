@@ -58,7 +58,8 @@ class kosdaq:
     def search_table(self, code):
         kosdaq_df = pd.DataFrame()
         try:
-            if self.cache_impl.GetCache() == 0:
+            cached_data = self.cache_impl.GetCache()
+            if isinstance(cached_data, int) and cached_data == 0:
                 kosdaq_df = self.table[self.table['stock_code'] == code]
                 if kosdaq_df.empty:
                     return pd.DataFrame({'message':['해당 코드의 주식이 존재 하지 않습니다.']})
