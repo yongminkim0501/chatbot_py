@@ -4,9 +4,8 @@ from .service import kosdaq
 
 def stock_view(request):
     kd = kosdaq()
-    kd.connect_token_path('C:\\Users\\user\\PycharmProjects\\pythonProject2\\token\\dart_token.txt')
-    kd.manage_path_financial('http://opendart.fss.or.kr/api/list.json')
     kd.get_token()
+    kd.manage_path_financial('http://opendart.fss.or.kr/api/list.json')
 
     if request.method == 'POST':
         stock_code = request.POST.get('stock_code', '')
